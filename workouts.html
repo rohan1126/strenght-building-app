@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Select Workout Days</title>
+    <link rel="stylesheet" type="text/css" href="workouts.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="goals.html">Goals</a></li>
+        <li><a href="workouts.html">Workouts</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+
+    <form action="/action_page.php">
+      <label for="workout">Choose a Workout split:</label>
+      <select name="workout" id="workout">
+        <option value="ppl">Push Pull Leg</option>
+        <option value="arnold">Arnold Split</option>
+      </select>
+      <br /><br />
+
+      <a href="terms.html">Confused?</a>
+    </form>
+    <br />
+    <button id="submit">Submit</button>
+
+    <div id="exerciseData"></div>
+    <div id="exerciseData"></div>
+  </body>
+  <script src="workouts.js"></script>
+</html>

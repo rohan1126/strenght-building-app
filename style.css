@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
   text-align: center;
-  /* padding: 15px; */
 }
 
 /* Global Styles */
@@ -47,4 +46,12 @@ nav li a {
   display: block;
   padding: 10px 20px;
   transition: background-color;
+}
+
+main {
+  padding: 20px;
+}
+
+p {
+  padding: 20px;
 }

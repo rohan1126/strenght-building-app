@@ -25,6 +25,7 @@ form.addEventListener("submit", function (event) {
 
   const ageInput = document.getElementById("age");
   const weightInput = document.getElementById("weight");
+  const weightGoal = document.getElementById("weightGoal");
   const heightInput = document.getElementById("height");
   const goalsInput = document.getElementById("goals");
 
@@ -32,12 +33,13 @@ form.addEventListener("submit", function (event) {
   const weight = weightInput.value;
   const height = heightInput.value;
   const goals = goalsInput.value;
+  const goalWeight = weightGoal.value;
 
-  if (goals.includes("bulk")) {
+  if (goals.includes("bulk") || weight < goalWeight) {
     const result = "Based on your input you want to bulk";
     resultDiv.textContent = result;
     calculateBMR(age, weight, height, goals);
-  } else {
+  } else if (goals.includes("cut") || weight > goalWeight) {
     const result = "Based on your input you want to cut";
     resultDiv.textContent = result;
     calculateBMR(age, weight, height, goals);

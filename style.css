@@ -4,7 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   text-align: center;
-  padding: 15px;
+  /* padding: 15px; */
 }
 
 /* Global Styles */
@@ -24,7 +24,6 @@ a {
 header {
   background-color: #333;
   color: #fff;
-  padding: 20px 0;
 }
 
 .container {

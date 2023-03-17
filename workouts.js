@@ -21,6 +21,10 @@ function getWorkout(link, keyword, callback) {
     .catch((err) => console.error(err));
 }
 
+function clearScreen() {
+  clear();
+}
+
 let pushLink = "https://exercisedb.p.rapidapi.com/exercises/target/pectorals";
 let pullLink =
   "https://exercisedb.p.rapidapi.com/exercises/target/upper%20back";
@@ -48,8 +52,18 @@ fetchBtn.addEventListener("click", () => {
         "<h1>" + "Legs" + "</h1>" + "<ul>" + exerciseList + "</ul>";
     });
   } else if (goalWorkout == "arnold") {
-    exerciseData.innerHTML = "<h1>" + "Arnold" + "</h1>";
-    console.log(goalWorkout);
+    getWorkout(pushLink, "press", (exerciseList) => {
+      push.innerHTML =
+        "<h1>" + "Chest/Back" + "</h1>" + "<ul>" + exerciseList + "</ul>";
+    });
+    getWorkout(pullLink, "row", (exerciseList) => {
+      pull.innerHTML =
+        "<h1>" + "Arms/Shoulders" + "</h1>" + "<ul>" + exerciseList + "</ul>";
+    });
+    getWorkout(legLink, "squat", (exerciseList) => {
+      exerciseData.innerHTML =
+        "<h1>" + "Legs" + "</h1>" + "<ul>" + exerciseList + "</ul>";
+    });
   } else {
     exerciseData.innerHTML = "<h3>" + "Please select valid workout" + "</h3>";
   }

@@ -13,16 +13,12 @@ function getWorkout(link, keyword, callback) {
       let exerciseList = "";
       for (let i = 0; i < 7; i++) {
         if (data[i].name.includes(keyword)) {
-          exerciseList += "<li>" + data[i].name + "</li>";
+          exerciseList += "<p>" + data[i].name + "</p>";
         }
       }
       callback(exerciseList);
     })
     .catch((err) => console.error(err));
-}
-
-function clearScreen() {
-  clear();
 }
 
 let pushLink = "https://exercisedb.p.rapidapi.com/exercises/target/pectorals";

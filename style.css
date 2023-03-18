@@ -23,11 +23,12 @@ a {
 header {
   background-color: #333;
   color: #fff;
+  height: 80px; /* adjust to desired height */
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0 20px;
 }
 
@@ -54,4 +55,31 @@ main {
 
 p {
   padding: 20px;
+}
+@media screen and (max-width: 768px) {
+  nav {
+    display: block;
+  }
+}
+.hero-text {
+  padding: 2rem 1rem;
+  font-size: 1.5rem;
+}
+
+.cta-btn {
+  display: block;
+  margin-top: 1rem;
+}
+
+.container {
+  padding: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
 }

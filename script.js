@@ -4,10 +4,22 @@ function calculateBMR(age, weight, height, goals) {
   //66.47 + ( 6.24 × weight in pounds ) + ( 12.7 × height in inches ) − ( 6.755 × age in years )
   const calcCal = document.getElementById("cal");
   const bulk = document.getElementById("bulk");
+  const bmi = document.getElementById("bmi");
+  const protein = document.getElementById("protein");
   let Bmr = Math.round(66.47 + 6.24 * weight + 12.7 * height - 6.755 * age);
+  let Bmi = Math.round((703 * weight) / (height * height));
+  let proteinMin = weight - 25;
+  // let proteinMax = weight + 10;
   let bulkCal = Bmr + 500;
   let cutCal = Bmr - 500;
 
+  bmi.textContent = "Your BMI is: " + Bmi;
+  protein.textContent =
+    "You should be aiming to eat " +
+    proteinMin +
+    " - " +
+    weight +
+    " grams of protein a day";
   calcCal.textContent = "Your BMR is: " + Bmr;
   if (goals == "bulk") {
     bulk.textContent =

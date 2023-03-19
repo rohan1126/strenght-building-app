@@ -1,19 +1,23 @@
-function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName("li");
+function filterTerms() {
+  // Get input value
+  var input = document.getElementById("myInput").value.toLowerCase();
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+  // Get all elements with class "term"
+  var terms = document.getElementsByClassName("term");
+
+  // Loop through all "term" elements and hide those that do not match the search query
+  for (var i = 0; i < terms.length; i++) {
+    var term = terms[i];
+    var content = term.nextElementSibling;
+    if (
+      term.innerText.toLowerCase().indexOf(input) > -1 ||
+      content.innerText.toLowerCase().indexOf(input) > -1
+    ) {
+      term.style.display = "";
+      content.style.display = "";
     } else {
-      li[i].style.display = "none";
+      term.style.display = "none";
+      content.style.display = "none";
     }
   }
 }
@@ -35,3 +39,18 @@ window.onclick = function (event) {
     }
   }
 };
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}

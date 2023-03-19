@@ -16,39 +16,49 @@
         </ul>
       </nav>
     </div>
-      <h3>Search for terms you may not recognize</h3>
-    </div>
+    <h3>Search for terms you may not recognize</h3>
+
     <input
       type="text"
       id="myInput"
-      onkeyup="myFunction()"
+      onkeyup="filterTerms()"
       placeholder="Search for names.."
     />
 
-    <ul  id="myUL">
-      <li>
-        <div class="dropdown">
-          <a onclick="drop()" class="dropbtn">Push Pull Leg</a>
-          <div id="myDropdown" class="dropdown-content">
-            <a 
-              >the “push” workout you train all the upper body pushing muscles,
-              i.e. the chest, shoulders and triceps. In the “pull” workout you
-              train all the upper body pulling muscles, i.e. the back and
-              biceps. And in the “legs” workout you train the entire lower body,
-              i.e. the quads, hamstrings, calves and abdominals.</a
-            >
-          </div>
-        </div>
-      </li>
-      <li><a href="#">BMR</a></li>
-
-      <li><a href="#">Arnold Split</a></li>
-      <li><a href="#">Calories</a></li>
-
-      <li><a href="#">Bulk</a></li>
-      <li><a href="#">Cut</a></li>
-      <li><a href="#">BMI</a></li>
-    </ul>
+    <p>Collapsible Set:</p>
+    <button class="collapsible term">Push Pull Leg</button>
+    <div class="content">
+      <p>
+        In the “push” workout you train all the upper body pushing muscles, i.e.
+        the chest, shoulders and triceps. In the “pull” workout you train all
+        the upper body pulling muscles, i.e. the back and biceps. And in the
+        “legs” workout you train the entire lower body, i.e. the quads,
+        hamstrings, calves and abdominals.
+      </p>
+    </div>
+    <button class="collapsible term">Arnold Split</button>
+    <div class="content">
+      <p>
+        The Arnold split is a six-day workout split in which you train the chest
+        and back, shoulders and arms, and legs twice per week.
+      </p>
+    </div>
+    <button class="collapsible term">BMI</button>
+    <div class="content">
+      <p>
+        Body mass index is a value derived from the mass and height of a person.
+      </p>
+    </div>
+    <button class="collapsible term">BMR</button>
+    <div class="content">
+      <p>The amount of calories you burn by doing nothing</p>
+    </div>
+    <button class="collapsible term">Calories</button>
+    <div class="content">
+      <p>
+        The amount of energy in an item of food or drink is measured in calories
+      </p>
+    </div>
   </body>
   <script src="terms.js"></script>
 </html>

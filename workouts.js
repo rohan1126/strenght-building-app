@@ -41,7 +41,12 @@ fetchBtn.addEventListener("click", () => {
     });
     getWorkout(pullLink, "row", (exerciseList) => {
       pull.innerHTML =
-        "<h1>" + "Pull" + "</h1>" + "<ul>" + exerciseList + "</ul>";
+        "<h1>" +
+        "Pull" +
+        "</h1>" +
+        "<ul href=http://d205bpvrqc9yn1.cloudfront.net/1001.gif>" +
+        exerciseList +
+        "</ul>";
     });
     getWorkout(legLink, "squat", (exerciseList) => {
       exerciseData.innerHTML =

@@ -71,3 +71,11 @@ nav li a:hover {
 li {
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  /* Other mobile styles */
+
+  header {
+    display: block;
+  }
+}

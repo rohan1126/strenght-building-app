@@ -99,4 +99,43 @@ nav li a:hover {
     padding: 8px;
     font-size: 16px;
   }
+
+  header {
+    height: 60px;
+    padding: 10px;
+  }
+
+  nav {
+    display: none;
+    position: relative;
+    height: 60px;
+    margin-top: 10px;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+  }
+
+  nav li {
+    display: block;
+    margin: 0;
+  }
+
+  nav li a {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  nav.show {
+    display: block;
+  }
+
+  nav.show ul {
+    display: block;
+  }
 }

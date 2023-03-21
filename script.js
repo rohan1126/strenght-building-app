@@ -44,7 +44,7 @@ form.addEventListener("submit", function (event) {
   const age = ageInput.value;
   const weight = weightInput.value;
   const height = heightInput.value;
-  const goals = goalsInput.value;
+  const goals = goalsInput.value.toLowerCase();
   const goalWeight = weightGoal.value;
 
   if (goals.includes("bulk") && weight < goalWeight) {

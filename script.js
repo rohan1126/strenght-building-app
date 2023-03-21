@@ -47,13 +47,17 @@ form.addEventListener("submit", function (event) {
   const goals = goalsInput.value;
   const goalWeight = weightGoal.value;
 
-  if (goals.includes("bulk") || weight < goalWeight) {
+  if (goals.includes("bulk") && weight < goalWeight) {
     const result = "Based on your input you want to bulk";
     resultDiv.textContent = result;
     calculateBMR(age, weight, height, goals);
-  } else if (goals.includes("cut") || weight > goalWeight) {
+  } else if (goals.includes("cut") && weight > goalWeight) {
     const result = "Based on your input you want to cut";
     resultDiv.textContent = result;
     calculateBMR(age, weight, height, goals);
+  } else {
+    const result =
+      "Please check to see if your goals have been entered properly";
+    resultDiv.textContent = result;
   }
 });

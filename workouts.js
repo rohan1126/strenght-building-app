@@ -28,9 +28,17 @@ function workoutList(split) {
   const arms = ["Bicep Curl", "Shoulder Press", "Tricep Extension"];
 
   if (split == "ppl") {
-    return { push: push, pull: pull, legs: legs };
+    return {
+      push: push,
+      pull: pull,
+      legs: legs,
+    };
   } else {
-    return { chest_back: chest_back, arms: arms, legs: legs };
+    return {
+      chest_back: chest_back,
+      arms: arms,
+      legs: legs,
+    };
   }
 }
 
@@ -39,53 +47,55 @@ const exerciseData = document.getElementById("exerciseData");
 const pushElem = document.getElementById("push");
 const pullElem = document.getElementById("pull");
 const legElem = document.getElementById("legs");
+const intensity = document.getElementById("intensity");
+const weights = {
+  light: " 3 x 10 easy weight",
+  moderate: " 3 x 8 moderate weight",
+  hard: " 4 x 8 heavy weight",
+};
 
 const chest_back_elem = document.getElementById("chest_back");
 const arms_elem = document.getElementById("arms");
 
 const workoutType = document.getElementById("workout");
 
-function generateList(list) {
-  let result = "<p>";
+function generateList(list, intensity) {
+  let result = "<h3>";
   if (list) {
     for (let i = 0; i < list.length; i++) {
-      result += "<li>" + list[i] + "</li>";
+      result += "<li>" + list[i] + intensity + "</li>";
     }
   }
-  result += "</p>";
+  result += "</h3>";
   return result;
 }
 
 function updateWorkout() {
-  let goalWorkout = workoutType.value;
+  pushElem.innerHTML = "";
+  pullElem.innerHTML = "";
+  legElem.innerHTML = "";
+  chest_back_elem.innerHTML = "";
+  arms_elem.innerHTML = "";
 
-  if (goalWorkout == "ppl") {
-    const workoutData = workoutList(goalWorkout);
-    const push = workoutData.push;
-    const pull = workoutData.pull;
-    const legs = workoutData.legs;
-    pushElem.innerHTML = "<h1>" + "Push" + "</h1>" + generateList(push);
-    pullElem.innerHTML = "<h1>" + "Pull" + "</h1>" + generateList(pull);
-    legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs);
-
-    // Clear the contents of other workout element containers
-    chest_back_elem.innerHTML = "";
-    arms_elem.innerHTML = "";
-  } else if (goalWorkout == "arnold") {
-    const workoutData = workoutList(goalWorkout);
+  const goalWorkout = workoutType.value;
+  const intensityValue = intensity.value;
+  const workoutData = workoutList(goalWorkout);
+  const push = workoutData.push;
+  const pull = workoutData.pull;
+  const legs = workoutData.legs;
+  const weight = weights[intensityValue];
+  if (goalWorkout === "ppl") {
+    pushElem.innerHTML = "<h1>" + "Push" + "</h1>" + generateList(push, weight);
+    pullElem.innerHTML = "<h1>" + "Pull" + "</h1>" + generateList(pull, weight);
+    legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs, weight);
+  } else if (goalWorkout === "arnold") {
     const chest_back = workoutData.chest_back;
-    chest_back_elem.innerHTML =
-      "<h1>" + "Chest/Back" + "</h1>" + generateList(chest_back);
-
     const arms = workoutData.arms;
-    arms_elem.innerHTML = "<h1>" + "Arms" + "</h1>" + generateList(arms);
-
-    const legs = workoutData.legs;
-    legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs);
-
-    // Clear the contents of other workout element containers
-    pushElem.innerHTML = "";
-    pullElem.innerHTML = "";
+    chest_back_elem.innerHTML =
+      "<h1>" + "Chest and Back" + "</h1>" + generateList(chest_back, weight);
+    arms_elem.innerHTML =
+      "<h1>" + "Arms" + "</h1>" + generateList(arms, weight);
+    legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs, weight);
   }
 }
 

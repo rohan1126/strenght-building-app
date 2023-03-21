@@ -1,0 +1,30 @@
+{
+  "Arnold Split": {
+    "type": "text",
+    "value": "Push Pull Leg In the push workout you train all the upper body pushing muscles, i.e.  the chest, shoulders and triceps. In the “pull” workout you train all the upper body pulling muscles, i.e. the back and biceps. And in the legs” workout you train the entire lower body, i.e. the quads,hamstrings, calves and abdominals."
+  },
+  "BMI": {
+    "type": "text",
+    "value": "Body mass index is a value derived from the mass and height of a person."
+  },
+  "BMR": {
+    "type": "text",
+    "value": "The amount of calories you burn by doing nothing"
+  },
+  "Bench Press": {
+    "type": "gif",
+    "value": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif"
+  },
+  "Calories": {
+    "type": "text",
+    "value": "The amount of energy in an item of food or drink is measured in calories"
+  },
+  "Push Pull Leg": {
+    "type": "text",
+    "value": "Push Pull Leg In the push workout you train all the upper body pushing muscles, i.e.  the chest, shoulders and triceps. In the “pull” workout you train all the upper body pulling muscles, i.e. the back and biceps. And in the legs” workout you train the entire lower body, i.e. the quads,hamstrings, calves and abdominals."
+  },
+  "Squat": {
+    "type": "gif",
+    "value": "https://www.inspireusafoundation.org/wp-content/uploads/2022/03/barbell-full-squat.gif"
+  }
+}

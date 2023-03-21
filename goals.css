@@ -20,11 +20,10 @@ label {
   margin-bottom: 10px;
 }
 
-header {
+/* header {
   background-color: #333;
   color: #fff;
-  height: 80px; /* adjust to desired height */
-}
+  height: 80px; } */
 
 input[type="number"],
 textarea {
@@ -53,6 +52,8 @@ input[type="submit"] {
 
 nav {
   background-color: #333;
+  color: #fff;
+  height: 80px; /* adjust to desired height */
   overflow: hidden;
 }
 

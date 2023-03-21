@@ -22,35 +22,61 @@ function filterTerms() {
   }
 }
 
-function drop() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function addClickEventListeners() {
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-  if (!event.target.matches(".dropbtn")) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
+// Call the function when the page loads
+addClickEventListeners();
+
+let text = "";
+
+// Make an AJAX request to load the terms and definitions from the JSON file
+const xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    const termsAndDefinitions = JSON.parse(this.responseText);
+    const text = createDropdowns(termsAndDefinitions);
+    document.getElementById("demo").innerHTML = text;
+    addClickEventListeners();
   }
 };
+xhttp.open("GET", "terms.json", true);
+xhttp.send();
 
-var coll = document.getElementsByClassName("collapsible");
-var i;
+function createDropdowns(termsAndDefinitions) {
+  let text = "";
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+  Object.keys(termsAndDefinitions).forEach((term) => {
+    const definition = termsAndDefinitions[term];
+
+    if (definition.type === "text") {
+      text += `<button class="collapsible term">${term}</button>
+        <div class="content">
+          <p>${definition.value}</p>
+        </div>`;
+    } else if (definition.type === "gif") {
+      text += `<button class="collapsible term">${term}</button>
+        <div class="content">
+          <p>
+            <img src="${definition.value}" alt="${term} GIF" />
+          </p>
+        </div>`;
     }
   });
+
+  return text;
 }

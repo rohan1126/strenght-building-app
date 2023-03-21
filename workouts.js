@@ -96,6 +96,12 @@ function updateWorkout() {
     arms_elem.innerHTML =
       "<h1>" + "Arms" + "</h1>" + generateList(arms, weight);
     legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs, weight);
+  } else if (goalWorkout === "" || intensityValue === "") {
+    pushElem.innerHTML = "<h1>" + "Please enter valid information" + "</h1>";
+    pullElem.innerHTML = "";
+    legElem.innerHTML = "";
+    chest_back_elem.innerHTML = "";
+    arms_elem.innerHTML = "";
   }
 }
 

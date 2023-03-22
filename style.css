@@ -1,35 +1,44 @@
-/* Reset Styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   text-align: center;
 }
 
-/* Global Styles */
-body {
+form {
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 14px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select:hover,
+select:focus {
+  outline: none;
+  border: 2px solid #4caf50;
+  background-color: #f2f2f2;
+}
+
+select option {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
   color: #333;
+  background-color: #fff;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+#result {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
 }
-
-/* Header Styles */
-header {
+nav {
   background-color: #333;
-  color: #fff;
-  height: 80px; /* adjust to desired height */
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
+  overflow: hidden;
 }
 
 nav ul {
@@ -45,41 +54,29 @@ nav li {
 
 nav li a {
   display: block;
-  padding: 10px 20px;
-  transition: background-color;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-main {
-  padding: 20px;
+nav li a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-p {
-  padding: 20px;
+li {
+  text-align: center;
 }
-@media screen and (max-width: 768px) {
-  nav {
+
+@media (max-width: 600px) {
+  /* Other mobile styles */
+
+  header {
     display: block;
   }
 }
-.hero-text {
-  padding: 2rem 1rem;
-  font-size: 1.5rem;
-}
-
-.cta-btn {
-  display: block;
-  margin-top: 1rem;
-}
-
-.container {
-  padding: 1rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-}
 
 p {
-  font-size: 1rem;
-  line-height: 1.5;
+  padding: 20px;
 }

@@ -28,8 +28,21 @@ function workoutList(split) {
     "Smith Machine Incline Bench",
     "Dumbell Shoulder Raise",
   ];
-  const pull = ["Barbell Back Row", "Bicep Curl", "Cable "];
-  const legs = ["Squat", "Leg Extensions", "Hamstring Curls"];
+  const pull = [
+    "Barbell Back Row",
+    "Bicep Cable Curl",
+    "Bicep Preacher Curl",
+    "Seated Back Row",
+    "Bent Over Back Row",
+  ];
+  const legs = [
+    "Squat",
+    "Lunges",
+    "Leg Extensions",
+    "Hamstring Curls",
+    "Bulgarian Split Squat",
+    "Calf Raises",
+  ];
   const chest_back = ["Bench Press", "Back Row", "Chest Dips"];
   const arms = ["Bicep Curl", "Shoulder Press", "Tricep Extension"];
 
@@ -91,9 +104,25 @@ function updateWorkout() {
   const legs = workoutData.legs;
   const weight = weights[intensityValue];
   if (goalWorkout === "ppl") {
-    pushElem.innerHTML = "<h1>" + "Push" + "</h1>" + generateList(push, weight);
-    pullElem.innerHTML = "<h1>" + "Pull" + "</h1>" + generateList(pull, weight);
-    legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs, weight);
+    pushElem.innerHTML =
+      "<img src='push.png' width='200' height='200'>" +
+      "<h1>" +
+      "Push" +
+      "</h1>" +
+      generateList(push, weight);
+
+    pullElem.innerHTML =
+      "<img src='pull.png' width='200' height='200'>" +
+      "<h1>" +
+      "Pull" +
+      "</h1>" +
+      generateList(pull, weight);
+    legElem.innerHTML =
+      "<img src='legs.png' width='200' height='200'>" +
+      "<h1>" +
+      "LEGS" +
+      "</h1>" +
+      generateList(legs, weight);
   } else if (goalWorkout === "arnold") {
     const chest_back = workoutData.chest_back;
     const arms = workoutData.arms;

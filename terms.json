@@ -26,5 +26,17 @@
   "Squat": {
     "type": "gif",
     "value": "https://www.inspireusafoundation.org/wp-content/uploads/2022/03/barbell-full-squat.gif"
+  },
+  "Easy Weight": {
+    "type": "text",
+    "value": "Weight that you feel will not challenge you too much"
+  },
+  "Moderate Weight": {
+    "type": "text",
+    "value": "Weight that will start to burn around halfway through the set"
+  },
+  "Heavy Weight": {
+    "type": "text",
+    "value": "Weight that will be difficult to lift from start to finish"
   }
 }

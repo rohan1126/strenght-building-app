@@ -3,6 +3,10 @@
   text-align: center;
 } */
 
+* {
+  text-align: center;
+}
+
 #myInput {
   background-image: url("/css/searchicon.png");
   background-position: 10px 12px;

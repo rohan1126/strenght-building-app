@@ -9,12 +9,13 @@ form {
   border-radius: 5px;
   font-family: Arial, sans-serif;
   font-size: 14px;
+  /* margin-left: -600px; */
 }
-label {
+/* label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-}
+} */
 select {
   width: 100%;
   padding: 10px 30px;
@@ -33,6 +34,31 @@ select {
   background-position: right 10px center;
   transition: all 0.3s ease-in-out;
 }
+#submit {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+#submit:hover {
+  background-color: #3e8e41; /* Darker green */
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+#submit:active {
+  background-color: #3e8e41;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2) inset;
+}
 
 select:hover,
 select:focus {
@@ -47,6 +73,7 @@ select option {
   font-weight: bold;
   color: #333;
   background-color: #fff;
+  white-space: nowrap;
 }
 
 #result {
@@ -86,11 +113,61 @@ nav li a:hover {
 li {
   text-align: center;
 }
-
-@media (max-width: 600px) {
-  /* Other mobile styles */
-
-  header {
-    display: block;
+@media only screen and (max-width: 600px) {
+  /* Styles for screens smaller than 600px */
+  #workout,
+  #intensity,
+  #days,
+  #equip {
+    width: 100%;
   }
+  #days {
+    margin-left: 0;
+  }
+  #equip {
+    margin-left: 0;
+  }
+}
+
+#workout,
+#intensity,
+#days,
+#equip {
+  width: 100%;
+}
+/* #days {
+  margin-left: -575px;
+  margin-top: -80px;
+}
+#equip {
+  margin-left: 600px;
+  margin-top: -90px;
+} */
+/* #days {
+  position: absolute;
+  margin-left: 400px;
+  margin-top: -143px;
+} */
+
+.workout-container {
+  display: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+#push,
+#pull,
+#legs {
+  flex: 1;
+  margin: 10px;
+  background-color: #fcf6f5ff;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+.show-container {
+  display: flex;
+  flex-wrap: wrap; /* Add this property */
 }

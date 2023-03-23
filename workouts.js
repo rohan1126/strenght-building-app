@@ -21,7 +21,13 @@
 //     .catch((err) => console.error(err));
 // }
 function workoutList(split) {
-  const push = ["Bench Press", "Shoulder Press", "Tricep"];
+  const push = [
+    "Bench Press",
+    "Dumbell Bench Press",
+    "Dumbell Shoulder Press",
+    "Smith Machine Incline Bench",
+    "Dumbell Shoulder Raise",
+  ];
   const pull = ["Barbell Back Row", "Bicep Curl", "Cable "];
   const legs = ["Squat", "Leg Extensions", "Hamstring Curls"];
   const chest_back = ["Bench Press", "Back Row", "Chest Dips"];
@@ -60,13 +66,13 @@ const arms_elem = document.getElementById("arms");
 const workoutType = document.getElementById("workout");
 
 function generateList(list, intensity) {
-  let result = "<h3>";
+  let result = "<h4>";
   if (list) {
     for (let i = 0; i < list.length; i++) {
-      result += "<li>" + list[i] + intensity + "</li>";
+      result += "<ul>" + list[i] + intensity + "</ul>";
     }
   }
-  result += "</h3>";
+  result += "</h4>";
   return result;
 }
 
@@ -144,3 +150,10 @@ fetchBtn.addEventListener("click", updateWorkout);
 // });
 
 // api for the workouts
+
+const submitButton = document.getElementById("submit");
+const workoutContainer = document.querySelector(".workout-container");
+
+submitButton.addEventListener("click", () => {
+  workoutContainer.classList.add("show-container");
+});

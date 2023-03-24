@@ -29,6 +29,9 @@
       </p>
 
       <form id="user-info-form">
+        <label for="names">Name:</label>
+        <input type="string" id="names" name="names" required />
+        <br />
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" required />
         <br />
@@ -48,16 +51,17 @@
         <textarea id="goals" name="goals" required></textarea>
         <br />
 
-        <input type="submit" value="Submit" />
+        <input type="submit" id="submit" value="Submit" />
       </form>
       <div id="result"></div>
     </div>
 
-    <div>
-      <p id="cal"></p>
-      <p id="bulk"></p>
-      <p id="bmi"></p>
-      <p id="protein"></p>
+    <div id="container" class="goals-container" style="display: none">
+      <div id="name">Name:</div>
+      <div id="cal">Calories:</div>
+      <div id="bulk">Bulk:</div>
+      <div id="bmi">BMI:</div>
+      <div id="protein">Protein:</div>
     </div>
 
     <script src="script.js"></script>

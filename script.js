@@ -1,7 +1,8 @@
 // script.js
 
-function calculateBMR(age, weight, height, goals) {
+function calculateBMR(Username, age, weight, height, goals) {
   //66.47 + ( 6.24 × weight in pounds ) + ( 12.7 × height in inches ) − ( 6.755 × age in years )
+  const name = document.getElementById("name");
   const calcCal = document.getElementById("cal");
   const bulk = document.getElementById("bulk");
   const bmi = document.getElementById("bmi");
@@ -13,6 +14,10 @@ function calculateBMR(age, weight, height, goals) {
   let bulkCal = Bmr + 500;
   let cutCal = Bmr - 500;
 
+  name.textContent =
+    "Hello " +
+    Username +
+    " We are so glad you are looking to better yourself! Below is some information that would be useful to reach your goals";
   bmi.textContent = "Your BMI is: " + Bmi;
   protein.textContent =
     "You should be aiming to eat " +
@@ -21,7 +26,7 @@ function calculateBMR(age, weight, height, goals) {
     weight +
     " grams of protein a day";
   calcCal.textContent = "Your BMR is: " + Bmr;
-  if (goals == "bulk") {
+  if (goals.includes("bulk") || goals.includes("Bulk")) {
     bulk.textContent =
       "To Bulk you should be eating roughly: " + bulkCal + " Calories";
   } else {
@@ -40,7 +45,8 @@ form.addEventListener("submit", function (event) {
   const weightGoal = document.getElementById("weightGoal");
   const heightInput = document.getElementById("height");
   const goalsInput = document.getElementById("goals");
-
+  const name = document.getElementById("names");
+  const names = name.value.toUpperCase();
   const age = ageInput.value;
   const weight = weightInput.value;
   const height = heightInput.value;
@@ -50,14 +56,21 @@ form.addEventListener("submit", function (event) {
   if (goals.includes("bulk") && weight < goalWeight) {
     const result = "Based on your input you want to bulk";
     resultDiv.textContent = result;
-    calculateBMR(age, weight, height, goals);
+    calculateBMR(names, age, weight, height, goals);
   } else if (goals.includes("cut") && weight > goalWeight) {
     const result = "Based on your input you want to cut";
     resultDiv.textContent = result;
-    calculateBMR(age, weight, height, goals);
+    calculateBMR(names, age, weight, height, goals);
   } else {
     const result =
       "Please check to see if your goals have been entered properly";
     resultDiv.textContent = result;
   }
+});
+
+const showContainerButton = document.getElementById("submit");
+const container = document.getElementById("container");
+
+showContainerButton.addEventListener("click", () => {
+  container.style.display = "flex";
 });

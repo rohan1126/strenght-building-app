@@ -131,6 +131,7 @@ label {
 }
 
 input[type="number"],
+input[type="string"],
 textarea {
   width: 50%;
   padding: 5px;
@@ -184,4 +185,41 @@ input[type="submit"]:hover {
   #protein {
     width: 100%;
   }
+}
+
+/* .goals-container {
+  display: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+} */
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#name {
+  margin: 0 auto 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+#cal,
+#bulk,
+#bmi,
+#protein {
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: lighter;
+  background-color: #fcf6f5ff;
+  align-self: flex-start;
+}
+
+.goals-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

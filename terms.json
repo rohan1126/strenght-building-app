@@ -38,5 +38,9 @@
   "Heavy Weight": {
     "type": "text",
     "value": "Weight that will be difficult to lift from start to finish"
+  },
+  "Split": {
+    "type": "text",
+    "value": "Way of dividing your training sessions into different body regions"
   }
 }

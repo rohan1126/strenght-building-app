@@ -20,6 +20,24 @@
 //     })
 //     .catch((err) => console.error(err));
 // }
+
+function generateCategoryHtml(name, exercises, intensity, image) {
+  let html = `
+    <img src="${image}" width="200" height="200">
+    <h1>${name}</h1>
+    <h4>
+      <ul>
+  `;
+  for (let i = 0; i < exercises.length; i++) {
+    html += `<p>${exercises[i]}${intensity}</p>`;
+  }
+  html += `
+      </ul>
+    </h4>
+  `;
+  return html;
+}
+
 function workoutList(split) {
   const push = [
     "Bench Press",
@@ -28,6 +46,13 @@ function workoutList(split) {
     "Smith Machine Incline Bench",
     "Dumbell Shoulder Raise",
   ];
+  const bwPush = [
+    "Push Up",
+    "Tricep Push Downs",
+    // "Dumbell Shoulder Press",
+    // "Smith Machine Incline Bench",
+    // "Dumbell Shoulder Raise",
+  ];
   const pull = [
     "Barbell Back Row",
     "Bicep Cable Curl",
@@ -35,6 +60,16 @@ function workoutList(split) {
     "Seated Back Row",
     "Bent Over Back Row",
   ];
+  const bwpull = [
+    "Pull up",
+    "Push Up",
+    "Bicep pull",
+    // "Seated Back Row",
+    // "Bent Over Back Row",
+  ];
+
+  const fwPush = ["DB press", "DB shoulder press", "DB tricep kickback"];
+  const fwPull = ["DB Back Row", "DB Curl", "Seated incline curl"];
   const legs = [
     "Squat",
     "Lunges",
@@ -51,6 +86,10 @@ function workoutList(split) {
       push: push,
       pull: pull,
       legs: legs,
+      bwPush: bwPush,
+      bwpull: bwpull,
+      fwPush: fwPush,
+      fwPull: fwPull,
     };
   } else {
     return {
@@ -67,6 +106,7 @@ const pushElem = document.getElementById("push");
 const pullElem = document.getElementById("pull");
 const legElem = document.getElementById("legs");
 const intensity = document.getElementById("intensity");
+const equipment = document.getElementById("equip");
 const weights = {
   light: " 3 x 10 easy weight",
   moderate: " 3 x 8 moderate weight",
@@ -102,41 +142,106 @@ function updateWorkout() {
   const push = workoutData.push;
   const pull = workoutData.pull;
   const legs = workoutData.legs;
+  const bwPush = workoutData.bwPush;
+  const bwPull = workoutData.bwpull;
+  const fwPush = workoutData.fwPush;
+  const fwPull = workoutData.fwPull;
   const weight = weights[intensityValue];
-  if (goalWorkout === "ppl") {
-    pushElem.innerHTML =
-      "<img src='push.png' width='200' height='200'>" +
-      "<h1>" +
-      "Push" +
-      "</h1>" +
-      generateList(push, weight);
+  const equipmentAvail = equipment.value;
 
-    pullElem.innerHTML =
-      "<img src='pull.png' width='200' height='200'>" +
-      "<h1>" +
-      "Pull" +
-      "</h1>" +
-      generateList(pull, weight);
-    legElem.innerHTML =
-      "<img src='legs.png' width='200' height='200'>" +
-      "<h1>" +
-      "LEGS" +
-      "</h1>" +
-      generateList(legs, weight);
-  } else if (goalWorkout === "arnold") {
-    const chest_back = workoutData.chest_back;
-    const arms = workoutData.arms;
-    chest_back_elem.innerHTML =
-      "<h1>" + "Chest and Back" + "</h1>" + generateList(chest_back, weight);
-    arms_elem.innerHTML =
-      "<h1>" + "Arms" + "</h1>" + generateList(arms, weight);
-    legElem.innerHTML = "<h1>" + "LEGS" + "</h1>" + generateList(legs, weight);
-  } else if (goalWorkout === "" || intensityValue === "") {
-    pushElem.innerHTML = "<h1>" + "Please enter valid information" + "</h1>";
+  switch (goalWorkout) {
+    case "ppl":
+      switch (equipmentAvail) {
+        case "bw":
+          pushElem.innerHTML = generateCategoryHtml(
+            "Push",
+            bwPush,
+            "",
+            "push.png"
+          );
+          pullElem.innerHTML = generateCategoryHtml(
+            "Pull",
+            bwPull,
+            "",
+            "pull.png"
+          );
+          legElem.innerHTML = generateCategoryHtml(
+            "Legs",
+            legs,
+            "",
+            "legs.png"
+          );
+          break;
+        case "fw":
+          pushElem.innerHTML = generateCategoryHtml(
+            "Push",
+            fwPush,
+            weight,
+            "push.png"
+          );
+          pullElem.innerHTML = generateCategoryHtml(
+            "Pull",
+            fwPull,
+            weight,
+            "pull.png"
+          );
+          legElem.innerHTML = generateCategoryHtml(
+            "Legs",
+            legs,
+            weight,
+            "legs.png"
+          );
+          break;
+
+        case "fg":
+          pushElem.innerHTML = generateCategoryHtml(
+            "Push",
+            push,
+            weight,
+            "push.png"
+          );
+          pullElem.innerHTML = generateCategoryHtml(
+            "Pull",
+            pull,
+            weight,
+            "pull.png"
+          );
+          legElem.innerHTML = generateCategoryHtml(
+            "Legs",
+            legs,
+            weight,
+            "legs.png"
+          );
+          break;
+        default:
+          break;
+      }
+      break;
+    case "arnold":
+      const chest_back = workoutData.chest_back;
+      const arms = workoutData.arms;
+      chest_back_elem.innerHTML =
+        "<h1>" + "Chest and Back" + "</h1>" + generateList(chest_back, weight);
+      arms_elem.innerHTML =
+        "<h1>" + "Arms" + "</h1>" + generateList(arms, weight);
+      legElem.innerHTML =
+        "<h1>" + "LEGS" + "</h1>" + generateList(legs, weight);
+      break;
+    default:
+      pullElem.innerHTML = "";
+      legElem.innerHTML = "";
+      chest_back_elem.innerHTML = "";
+      arms_elem.innerHTML = "";
+      pushElem.innerHTML = "<h1>" + "Please enter valid information" + "</h1>";
+      break;
+  }
+
+  if (goalWorkout === "" || intensityValue === "") {
     pullElem.innerHTML = "";
     legElem.innerHTML = "";
     chest_back_elem.innerHTML = "";
     arms_elem.innerHTML = "";
+    pushElem.innerHTML = "<h1>" + "Please enter valid information" + "</h1>";
   }
 }
 

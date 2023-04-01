@@ -13,6 +13,7 @@ function calculateBMR(Username, age, weight, height, goals) {
   // let proteinMax = weight + 10;
   let bulkCal = Bmr + 500;
   let cutCal = Bmr - 500;
+  let maintainCal = Bmr - 250;
 
   name.textContent =
     "Hello " +
@@ -25,15 +26,22 @@ function calculateBMR(Username, age, weight, height, goals) {
     " - " +
     weight +
     " grams of protein a day";
-  calcCal.textContent = "Your BMR is: " + Bmr;
+  calcCal.textContent =
+    "Your BMR is: " +
+    Bmr +
+    " BMR is the amount of calories you burn by doing nothing";
   if (goals.includes("bulk") || goals.includes("Bulk")) {
     bulk.textContent =
       "To Bulk you should be eating roughly: " + bulkCal + " Calories";
+  } else if (goals.includes("maintain")) {
+    bulk.textContent =
+      "To maintain you should be eating roughly : " + Bmr + " Calories";
   } else {
     bulk.textContent =
       "To Cut you should be eating roughly: " + cutCal + " Calories";
   }
 }
+
 const form = document.getElementById("user-info-form");
 const resultDiv = document.getElementById("result");
 
@@ -56,9 +64,14 @@ form.addEventListener("submit", function (event) {
   if (goals.includes("bulk") && weight < goalWeight) {
     const result = "Based on your input you want to bulk";
     resultDiv.textContent = result;
+
     calculateBMR(names, age, weight, height, goals);
   } else if (goals.includes("cut") && weight > goalWeight) {
     const result = "Based on your input you want to cut";
+    resultDiv.textContent = result;
+    calculateBMR(names, age, weight, height, goals);
+  } else if (goals.includes("maintain") && weight === goalWeight) {
+    const result = "Based on your input you want to maintain your weight";
     resultDiv.textContent = result;
     calculateBMR(names, age, weight, height, goals);
   } else {

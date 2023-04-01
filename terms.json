@@ -42,5 +42,17 @@
   "Split": {
     "type": "text",
     "value": "Way of dividing your training sessions into different body regions"
+  },
+  "Maintain": {
+    "type": "text",
+    "value": "Stay around the same weight"
+  },
+  "Bulk": {
+    "type": "text",
+    "value": "Gain weight"
+  },
+  "Cut": {
+    "type": "text",
+    "value": "Lose weight"
   }
 }

@@ -44,6 +44,79 @@ function calculateBMR(Username, age, weight, height, goals) {
 
 const form = document.getElementById("user-info-form");
 const resultDiv = document.getElementById("result");
+const name = document.getElementById("names");
+const ageInput = document.getElementById("age");
+const weightInput = document.getElementById("weight");
+const weightGoal = document.getElementById("weightGoal");
+const heightInput = document.getElementById("height");
+const goalsInput = document.getElementById("goals");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const names = name.value.toUpperCase();
+  const age = ageInput.value;
+  const weight = weightInput.value;
+  const height = heightInput.value;
+  const goals = goalsInput.value.toLowerCase();
+  const goalWeight = weightGoal.value;
+
+  // Save input values to local storage
+  localStorage.setItem("name", names);
+  localStorage.setItem("age", age);
+  localStorage.setItem("weight", weight);
+  localStorage.setItem("height", height);
+  localStorage.setItem("goals", goals);
+  localStorage.setItem("goalWeight", goalWeight);
+
+  if (goals.includes("bulk") && weight < goalWeight) {
+    const result = "Based on your input you want to bulk";
+    resultDiv.textContent = result;
+
+    calculateBMR(names, age, weight, height, goals);
+  } else if (goals.includes("cut") && weight > goalWeight) {
+    const result = "Based on your input you want to cut";
+    resultDiv.textContent = result;
+    calculateBMR(names, age, weight, height, goals);
+  } else if (goals.includes("maintain") && weight === goalWeight) {
+    const result = "Based on your input you want to maintain your weight";
+    resultDiv.textContent = result;
+    calculateBMR(names, age, weight, height, goals);
+  } else {
+    const result =
+      "Please check to see if your goals have been entered properly";
+    resultDiv.textContent = result;
+  }
+});
+
+// Retrieve input values from local storage when the page loads
+window.addEventListener("load", function () {
+  const savedName = localStorage.getItem("name");
+  const savedAge = localStorage.getItem("age");
+  const savedWeight = localStorage.getItem("weight");
+  const savedHeight = localStorage.getItem("height");
+  const savedGoals = localStorage.getItem("goals");
+  const savedGoalWeight = localStorage.getItem("goalWeight");
+
+  if (savedName) {
+    name.value = savedName;
+  }
+  if (savedAge) {
+    ageInput.value = savedAge;
+  }
+  if (savedWeight) {
+    weightInput.value = savedWeight;
+  }
+  if (savedHeight) {
+    heightInput.value = savedHeight;
+  }
+  if (savedGoals) {
+    goalsInput.value = savedGoals;
+  }
+  if (savedGoalWeight) {
+    weightGoal.value = savedGoalWeight;
+  }
+});
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
